@@ -16,10 +16,12 @@
 
 # System Overview
 
-  We will have to figure out how to build a browser. We have to figure out how to generate audio. We will figure out how to turn text into speech.
+  The browser engine is what works under the hood of web browsers like Firefox and Chrome to take the web page and display it. There are many components to a browser engine, such as the HTML parser and the CSS parser. This part is going to  
 
 # Possible Challenges
   
-  We
+  Difficulty to find resources for audio/speech synthesis/etc, especially given that it's Rust and not a more common language. Also, we will have to figure out generally how to represent the objects and stuff as audio. For example, images.
 
 # References
+
+  Sean found this: https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html.
