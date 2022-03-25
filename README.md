@@ -1,6 +1,6 @@
 # About
 
-## W.B.E Audio
+## W.B.E. Audio
 
 - Benjamin Chen | bc21
 
@@ -13,7 +13,7 @@
 
 # Project Introduction
 
-  We create an aural browser engine. Basically, it takes the HTML and CSS and generates audio based on that.
+  We create an aural browser engine. Basically, it takes the HTML and CSS and generates audio based on that. We chose to make this because we thought it was cool idea we were leaning towards ands seems reasonably challenging to make. 
 ![alt text](https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/BrowserEngine.png)
 
 # System Overview
