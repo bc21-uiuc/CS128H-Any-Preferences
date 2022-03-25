@@ -12,10 +12,14 @@
 
 # Project Introduction
 
-  We create a aural browser engine. Basically, it takes the HTML and CSS and generates audio.
+  We create a aural browser engine. Basically, it takes the HTML and CSS and generates audio based on that.
 
 # System Overview
 
+  We will have to figure out how to build a browser. We have to figure out how to generate audio. We will figure out how to turn text into speech.
+
 # Possible Challenges
+  
+  We
 
 # References
