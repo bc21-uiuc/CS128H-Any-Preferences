@@ -13,12 +13,13 @@
 
 # Project Introduction
 
-  We create an aural browser engine. Basically, it takes the HTML and CSS and generates audio based on that. We chose to make this because we thought it was cool idea we were leaning towards ands seems reasonably challenging to make. 
-![alt text](https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/BrowserEngine.png)
+  We create an aural browser engine. Basically, it takes the HTML and CSS and generates audio based on that. We chose to make this because we thought it was cool idea we were leaning towards ands seems reasonably challenging to make.
+
+![browser components](https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/BrowserEngine.png)
 
 # System Overview
 
-  The browser engine is what works under the hood of web browsers like Firefox and Chrome to take the web page and display it. There are many components to a browser engine, such as the HTML parser and the CSS parser. This code will implement the DOM structure to handle the different languages that can act as its inputs, it will have proper implementations for common parts of websites, especially boxes and a block layout, and it will do all this in addition to a special sound component. This sound component will as we have currently decided, take the code for an image and create a playable sound when the image is clicked.
+  The browser engine is what works under the hood of web browsers like Firefox and Chrome to take the web page and display it. There are many components to a browser engine, such as the HTML parser and the CSS parser. This code will implement the DOM structure to handle the different languages that can act as its inputs. Browser engines typically display a visual image, but ours will generate audio instead. 
 
 # Possible Challenges
   
