@@ -1,0 +1,2 @@
+[dependencies]
+libsoxr = "0.2"
