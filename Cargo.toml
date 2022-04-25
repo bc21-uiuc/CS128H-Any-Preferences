@@ -5,7 +5,3 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
-<<<<<<< HEAD
-=======
->>>>>>> 6726cf9b112d0553db769e80d2e01e31c39a373f
