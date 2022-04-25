@@ -1,2 +1,5 @@
 [dependencies]
-libsoxr = "0.2"
+byteorder = "1.3.4"
+encoding = "0.2.33"
+uuid = "0.8.1"
+clap = "2.33.3"
