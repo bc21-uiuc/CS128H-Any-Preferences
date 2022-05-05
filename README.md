@@ -31,5 +31,10 @@
 
   This was our initial inspiration: https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html. It also is where we found the image shown in the Project Introduction section.
   https://github.com/ckw017/vader-sentiment-rust
+  
+  We used code from these libraries to try and handle the audio aspect of the project:
+  For Text To Speech: https://github.com/ndarilek/tts-rs by Nolan Darilek
+  For Grayscale Image To Sound: https://github.com/iluvcapra/bwavfile by Jamie Hardt
+  
 
 
