@@ -1,4 +1,3 @@
-struct Point(usize, usize);
 struct DivIter {
     value: usize, // usize??? or would u32 B mr appropr?
     divisor: usize,
@@ -12,11 +11,12 @@ impl Iterator for DivIter {
     type Item = usize; // is this necessary? shouldn't i put this somewhere else?
                        // should I check for that vaue is a power of the divisor?
     fn next(&mut self) -> Option<Self::Item> {
-        if value == 0 {
+        if self.value == 0 {
             None
         } else {
-            Some(self.value);
+            let temp = self.value;
             self.value /= self.divisor;
+            Some(temp)
         }
     }
 }
@@ -38,11 +38,12 @@ impl Iterator for MultIter {
     type Item = usize; // is this necessary? shouldn't i put this somewhere else?
                        // should I check for that vaue is a power of the multiplier?
     fn next(&mut self) -> Option<Self::Item> {
-        if value >= stop {
+        if self.value >= self.stop {
             None
         } else {
-            Some(self.value);
+            let temp = self.value;
             self.value *= self.multiplier;
+            Some(temp)
         }
     }
 }
@@ -50,16 +51,17 @@ impl Iterator for MultIter {
 /// convert a (x, y) coordinate to the corresponding index $d$ of Hilbert curve
 /// code "translated" here: https://en.wikipedia.org/wiki/Hilbert_curve
 /// dim must be power of 2
-fn hilbert_2_to_1(dim: usize, point: Point) -> Result<usize, &str> {
-    if !dim.is_power_of_2 {
+/// starts in top left, i.e. traces a U-shape
+pub fn hilbert_2_to_1(dim: usize, point: (usize, usize)) -> Result<usize, &'static str> {
+    if !dim.is_power_of_two() {
         return Err("dimension must be a power of 2");
     } // what if non-power of 2
-    let (mut x, mut y) = point;
-    if x >= n || y >= n {
+    let (mut x, mut y) = point; // this is how to deestrcutre?
+    if x >= dim || y >= dim {
         return Err("at least one of the coordinates is larger than the dimension");
     }
     let mut result = 0;
-    for cur_dim in DivIter::new(dim / 2, 2) {
+    for curr_dim in DivIter::new(dim / 2, 2) {
         // qx and qy determine the quadrant
         // if coord & curr_dim > 0, then that means
         // it's in the upper quadrant
@@ -71,7 +73,6 @@ fn hilbert_2_to_1(dim: usize, point: Point) -> Result<usize, &str> {
             (false, true) => 1,
             (true, true) => 2,
             (true, false) => 3,
-            _ => panic!("should be exhaustive"),
         };
         result += curr_dim * curr_dim * quadrant;
         rot(dim, &mut x, &mut y, qx, qy)
@@ -79,32 +80,40 @@ fn hilbert_2_to_1(dim: usize, point: Point) -> Result<usize, &str> {
     return Ok(result);
 }
 
-fn hilbert_1_to_2(dim: usize, value: usize) -> Result<Point, &str> {
-    if !dim.is_power_of_2 {
+/// starts in top left, i.e. U-shape
+/// like this: 0 3
+///            1 2
+pub fn hilbert_1_to_2(dim: usize, value: usize) -> Result<(usize, usize), &'static str> {
+    if !dim.is_power_of_two() {
         return Err("dimension must be a power of 2");
     }
     if value > dim * dim {
         return Err("value is larger than the dimension");
     }
-    let mut x = 0;
-    let mut y = 0;
-    let mut t = value;
+    let mut x: usize = 0;
+    let mut y: usize = 0;
+    let mut t: usize = value;
     for curr_dim in MultIter::new(1, 2, dim) {
-        let qx = 1 & (t / 2);
-        let qy = 1 & (t ^ qx);
+        let qx = 1 & (t / 2) > 0;
+        let qy = (t % 2 == 0) != qx; // wtf is going on
         rot(curr_dim, &mut x, &mut y, qx, qy);
-        result_x += curr_dim * qx;
-        result_y += curr_dim * qy;
+        if qx {
+            x += curr_dim;
+        }
+        if qy {
+            y += curr_dim
+        } // originally result_x and result_y
         t /= 4;
     }
-    return Point(x, y);
+    return Ok((x, y));
 }
 
-fn rot(dim: usize, &mut x: usize, &mut y: usize, qx: bool, qy: bool) {
+fn rot(dim: usize, x: &mut usize, y: &mut usize, qx: bool, qy: bool) {
+    // not sure if should be &usize
     // rotate accordingly if it is in the lower left or lower right quadrant
-    if (!qy) {
+    if !qy {
         // if lower right, rotate 180 deg, and then...
-        if (qx) {
+        if qx {
             *x = dim - 1 - *x;
             *y = dim - 1 - *y;
         }
@@ -116,11 +125,10 @@ fn rot(dim: usize, &mut x: usize, &mut y: usize, qx: bool, qy: bool) {
 }
 
 #[cfg(test)]
-use super::*;
 mod tests {
+    use super::*;
     #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
+    fn asdf() {
+        assert!(true);
     }
 }

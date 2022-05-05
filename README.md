@@ -30,5 +30,6 @@
 # References
 
   This was our initial inspiration: https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html. It also is where we found the image shown in the Project Introduction section.
+  https://github.com/ckw017/vader-sentiment-rust
 
 
