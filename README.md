@@ -34,9 +34,9 @@
   
   We used code from these libraries to try and handle the audio aspect of the project:
   
-    For Text To Speech: https://github.com/ndarilek/tts-rs by Nolan Darilek
+  For Text To Speech: https://github.com/ndarilek/tts-rs by Nolan Darilek
   
-    For Grayscale Image To Sound: https://github.com/iluvcapra/bwavfile by Jamie Hardt
+  For Grayscale Image To Sound: https://github.com/iluvcapra/bwavfile by Jamie Hardt
   
 
 
