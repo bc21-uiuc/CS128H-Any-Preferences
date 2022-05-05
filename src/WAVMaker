@@ -78,20 +78,14 @@ impl ToneBurstSignal for Vec<ToneBurst> {
     }
 }
 
-fn create_blits_file(file_name: &str, sample_rate: u32, bits_per_sample: u16) -> Result<(), Error> {
+fn create_blits_file(file_name: &str, sample_rate: u32, bits_per_sample: u16, input: Vec<i32>) -> Result<(), Error> {
     // BLITS Tone signal format
     // From EBU Tech 3304 §4 - https://tech.ebu.ch/docs/tech/tech3304.pdf
     let lfe_channel_sequence: Vec<ToneBurst> = vec![
         // channel ident
-        ToneBurst::Silence(3200),
-        ToneBurst::Tone(660.0, 600, -18.0),
-        ToneBurst::Silence(200),
-        ToneBurst::Silence(800),
-        // LR ident
-        ToneBurst::Silence(5400),
-        // Phase check,
-        ToneBurst::Tone(2000.0, 3000, -24.0),
-        ToneBurst::Silence(200),
+        for i in input {
+            ToneBurst::Tone(3.0 * i, 600, -18.0),
+        }
     ];
     
     let length = [&lfe_channel_sequence].iter().map(|i| i.duration(sample_rate)).max().unwrap_or(0);
