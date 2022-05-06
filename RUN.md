@@ -15,10 +15,10 @@ example
 ```
 mod hilbert;
 fn main() {
-for i in 0..8 * 8 {
-     let point = hilbert::hilbert_1_to_2(8, i).unwrap();
-     print!("{:?}", point);
-}
+     for i in 0..8 * 8 {
+          let point = hilbert::hilbert_1_to_2(8, i).unwrap();
+          print!("{:?}", point);
+     }
 }
 ```
 this will print out the coordinates (0-indexed) points along the Hilbert curve for a 8x8 square, starting at the bottom-left corner and ending at the bottom-right corner.
